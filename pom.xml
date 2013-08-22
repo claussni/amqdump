@@ -84,6 +84,17 @@
             <groupId>com.yourmediashelf.fedora.client</groupId>
             <artifactId>fedora-client-messaging</artifactId>
             <version>0.6</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.0</version>
         </dependency>
     </dependencies>
 
