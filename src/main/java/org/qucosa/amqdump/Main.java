@@ -12,6 +12,7 @@
  */
 package org.qucosa.amqdump;
 
+import org.apache.activemq.jndi.ActiveMQInitialContextFactory;
 import org.fcrepo.client.messaging.JmsMessagingClient;
 import org.fcrepo.client.messaging.MessagingListener;
 import org.fcrepo.server.errors.MessagingException;
@@ -25,6 +26,8 @@ import java.util.Properties;
 
 public class Main implements MessagingListener {
 
+	public static final String ACTIVEMQ_CONTEXT_FACTORY_NAME = ActiveMQInitialContextFactory.class.getCanonicalName();
+
 	public static void main(String[] args) throws MessagingException {
 		new Main().start();
 	}
@@ -32,7 +35,7 @@ public class Main implements MessagingListener {
 	public void start() throws MessagingException {
 		Properties properties = new Properties();
 		properties.setProperty(Context.INITIAL_CONTEXT_FACTORY,
-				"org.apache.activemq.jndi.ActiveMQInitialContextFactory");
+				ACTIVEMQ_CONTEXT_FACTORY_NAME);
 		properties.setProperty(Context.PROVIDER_URL, "tcp://localhost:61616");
 		properties.setProperty(JMSManager.CONNECTION_FACTORY_NAME, "ConnectionFactory");
 		properties.setProperty("topic.fedora", "fedora.apim.*");
