@@ -12,11 +12,11 @@
  */
 package org.qucosa.amqdump;
 
+import com.yourmediashelf.fedora.client.messaging.JMSManager;
+import com.yourmediashelf.fedora.client.messaging.MessagingClient;
+import com.yourmediashelf.fedora.client.messaging.MessagingException;
+import com.yourmediashelf.fedora.client.messaging.MessagingListener;
 import org.apache.activemq.jndi.ActiveMQInitialContextFactory;
-import org.fcrepo.client.messaging.JmsMessagingClient;
-import org.fcrepo.client.messaging.MessagingListener;
-import org.fcrepo.server.errors.MessagingException;
-import org.fcrepo.server.messaging.JMSManager;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -39,7 +39,7 @@ public class Main implements MessagingListener {
 		properties.setProperty(Context.PROVIDER_URL, "tcp://localhost:61616");
 		properties.setProperty(JMSManager.CONNECTION_FACTORY_NAME, "ConnectionFactory");
 		properties.setProperty("topic.fedora", "fedora.apim.*");
-		new JmsMessagingClient("example1", this, properties, false).start();
+		new MessagingClient("example1", this, properties, false).start();
 	}
 
 	public void onMessage(String clientId, Message message) {

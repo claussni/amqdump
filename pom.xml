@@ -41,7 +41,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <minimizeJar>true</minimizeJar>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer
@@ -57,14 +56,6 @@
                                         <exclude>META-INF/*.DSA</exclude>
                                         <exclude>META-INF/*.RSA</exclude>
                                     </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>org.apache.activemq:activemq-core</artifact>
-                                    <includes>
-                                        <include>org/apache/activemq/transport/**</include>
-                                        <include>org/apache/activemq/openwire/OpenWireFormatFactory*</include>
-                                        <include>org/apache/activemq/openwire/v9/*</include>
-                                    </includes>
                                 </filter>
                             </filters>
                         </configuration>
@@ -90,9 +81,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.fcrepo</groupId>
-            <artifactId>fcrepo-client-messaging</artifactId>
-            <version>3.6.2</version>
+            <groupId>com.yourmediashelf.fedora.client</groupId>
+            <artifactId>fedora-client-messaging</artifactId>
+            <version>0.6</version>
         </dependency>
     </dependencies>
 
