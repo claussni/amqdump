@@ -39,7 +39,7 @@ public class Main implements MessagingListener {
 		properties.setProperty(Context.PROVIDER_URL, "tcp://localhost:61616");
 		properties.setProperty(JMSManager.CONNECTION_FACTORY_NAME, "ConnectionFactory");
 		properties.setProperty("topic.fedora", "fedora.apim.*");
-		new MessagingClient("example1", this, properties, false).start();
+		new MessagingClient("amqdump", this, properties, false).start();
 	}
 
 	public void onMessage(String clientId, Message message) {
