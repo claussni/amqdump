@@ -22,6 +22,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.TextMessage;
 import javax.naming.Context;
+import java.sql.Timestamp;
 import java.util.Properties;
 
 public class Main implements MessagingListener {
@@ -64,7 +65,8 @@ public class Main implements MessagingListener {
 	public void onMessage(String clientId, Message message) {
 		try {
 			String messageText = ((TextMessage) message).getText();
-			System.out.printf("Message received: %s on %s\n%s\n",
+			System.out.printf("[%s] Message received: %s on %s\n%s\n\n",
+					new Timestamp(System.currentTimeMillis()),
 					message.getStringProperty("methodName"),
 					message.getStringProperty("pid"),
 					messageText);
