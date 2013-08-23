@@ -38,9 +38,11 @@ public class Main implements MessagingListener {
 		Properties properties = new Properties();
 		properties.setProperty(Context.INITIAL_CONTEXT_FACTORY,
 				ACTIVEMQ_CONTEXT_FACTORY_NAME);
-		properties.setProperty(Context.PROVIDER_URL, DEFAULT_PROVIDER_URL);
 		properties.setProperty(JMSManager.CONNECTION_FACTORY_NAME, "ConnectionFactory");
-		properties.setProperty("topic.fedora", DEFAULT_TOPIC_FILTER);
+		properties.setProperty(Context.PROVIDER_URL,
+				System.getProperty(Context.PROVIDER_URL, DEFAULT_PROVIDER_URL));
+		properties.setProperty("topic.fedora",
+				System.getProperty("topic.fedora", DEFAULT_TOPIC_FILTER));
 		MessagingClient mclient = new MessagingClient("amqdump", this, properties, false);
 		registerShutdownHook(mclient);
 		mclient.start();
