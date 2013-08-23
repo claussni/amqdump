@@ -27,6 +27,8 @@ import java.util.Properties;
 public class Main implements MessagingListener {
 
 	public static final String ACTIVEMQ_CONTEXT_FACTORY_NAME = ActiveMQInitialContextFactory.class.getCanonicalName();
+	public static final String DEFAULT_PROVIDER_URL = "tcp://localhost:61616";
+	public static final String DEFAULT_TOPIC_FILTER = "fedora.apim.*";
 
 	public static void main(String[] args) throws MessagingException {
 		new Main().start();
@@ -36,9 +38,9 @@ public class Main implements MessagingListener {
 		Properties properties = new Properties();
 		properties.setProperty(Context.INITIAL_CONTEXT_FACTORY,
 				ACTIVEMQ_CONTEXT_FACTORY_NAME);
-		properties.setProperty(Context.PROVIDER_URL, "tcp://localhost:61616");
+		properties.setProperty(Context.PROVIDER_URL, DEFAULT_PROVIDER_URL);
 		properties.setProperty(JMSManager.CONNECTION_FACTORY_NAME, "ConnectionFactory");
-		properties.setProperty("topic.fedora", "fedora.apim.*");
+		properties.setProperty("topic.fedora", DEFAULT_TOPIC_FILTER);
 		MessagingClient mclient = new MessagingClient("amqdump", this, properties, false);
 		registerShutdownHook(mclient);
 		mclient.start();
