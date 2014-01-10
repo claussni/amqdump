@@ -59,8 +59,8 @@ public class Main implements MessagingListener {
 			public void run() {
 				try {
 					mclient.stop(true);
-				} catch (MessagingException e) {
-					System.err.println(e.getMessage());
+				} catch (Exception e) {
+					System.err.println("Error stopping Messaging Listener: " + e.getMessage());
 				}
 			}
 		});
