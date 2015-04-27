@@ -85,7 +85,7 @@
         <dependency>
             <groupId>com.yourmediashelf.fedora.client</groupId>
             <artifactId>fedora-client-messaging</artifactId>
-            <version>0.6</version>
+            <version>0.7</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
