@@ -36,9 +36,10 @@ The default ActiveMQ URL is ```tcp://localhost:61616```. The default topic filte
 one has to provide appropriate Java system properties (java.naming.provider.url, topic.fedora) to the runtime on startup.
 For example to listen to some other server and only dump update method messages run:
 
-    $ java -jar amqdump-<VERSION>.jar \ 
+    $ java  \
         -Djava.naming.provider.url=tcp://some.other.amq:71717 \
         -Dtopic.fedora=fedora.apim.update
+        -jar amqdump-<VERSION>.jar \
 
 
 ### Stop listening
